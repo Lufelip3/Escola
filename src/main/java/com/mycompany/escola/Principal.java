@@ -18,6 +18,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -164,7 +165,10 @@ public class Principal extends javax.swing.JFrame {
     private void jTCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCadastrarActionPerformed
         Alunos a =new Alunos(jTNome.getText(), jTEmail.getText(), 
                 jTTelefone.getText(), jTNascimento.getText());
-       JOptionPane.showConfirmDialog(rootPane, a.getNome());
+       Resultado r = new Resultado(a);
+       r.setVisible(true);
+       r.setLocationRelativeTo(this);
+       
     }//GEN-LAST:event_jTCadastrarActionPerformed
 
     /**
