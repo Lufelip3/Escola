@@ -36,10 +36,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTTelefone = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTNascimento = new javax.swing.JTextField();
         jTCadastrar = new javax.swing.JButton();
+        jTTelefone = new javax.swing.JFormattedTextField();
+        jTNascimento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,24 +63,34 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setText("Telefone:");
 
+        jLabel5.setText("Data de nascimento");
+
+        jTCadastrar.setText("Cadastrar");
+        jTCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTCadastrarActionPerformed(evt);
+            }
+        });
+
+        try {
+            jTTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jTTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTTelefoneActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Data de nascimento");
-
+        try {
+            jTNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jTNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTNascimentoActionPerformed(evt);
-            }
-        });
-
-        jTCadastrar.setText("Cadastrar");
-        jTCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTCadastrarActionPerformed(evt);
             }
         });
 
@@ -110,8 +120,8 @@ public class Principal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTEmail)
-                                    .addComponent(jTTelefone)
-                                    .addComponent(jTNome)))))
+                                    .addComponent(jTNome)
+                                    .addComponent(jTTelefone)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jTCadastrar)))
@@ -132,12 +142,12 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jTTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jTNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(jTCadastrar)
                 .addContainerGap())
@@ -154,14 +164,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTEmailActionPerformed
 
-    private void jTTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTTelefoneActionPerformed
-
-    private void jTNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNascimentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTNascimentoActionPerformed
-
     private void jTCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCadastrarActionPerformed
         Alunos a =new Alunos(jTNome.getText(), jTEmail.getText(), 
                 jTTelefone.getText(), jTNascimento.getText());
@@ -170,6 +172,14 @@ public class Principal extends javax.swing.JFrame {
        r.setLocationRelativeTo(this);
        
     }//GEN-LAST:event_jTCadastrarActionPerformed
+
+    private void jTNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTNascimentoActionPerformed
+
+    private void jTTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTTelefoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,8 +224,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton jTCadastrar;
     private javax.swing.JTextField jTEmail;
-    private javax.swing.JTextField jTNascimento;
+    private javax.swing.JFormattedTextField jTNascimento;
     private javax.swing.JTextField jTNome;
-    private javax.swing.JTextField jTTelefone;
+    private javax.swing.JFormattedTextField jTTelefone;
     // End of variables declaration//GEN-END:variables
 }
