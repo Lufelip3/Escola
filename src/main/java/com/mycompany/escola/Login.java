@@ -5,6 +5,7 @@
 package com.mycompany.escola;
 
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -133,8 +135,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
-        System.out.println("Login: " + jTLogin.getText());
-        System.out.println("Senha: " + Arrays.toString(jPSenha.getPassword()));
+        
+        if ("admin".equals(jTLogin.getText())) {
+            if ("123456".equals(String.valueOf(jPSenha.getPassword()))){
+                Principal p = new Principal();
+                p.setVisible(true);
+                this.dispose();}
+            else {
+                JOptionPane.showMessageDialog(null, "Senha errada!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário inválido!");
+        }
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void jPSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPSenhaActionPerformed
